@@ -5,7 +5,7 @@ import { DRACOLoader, GLTFLoader } from 'three/examples/jsm/Addons.js';
 export function init({ elm }) {
     this.THREE = THREE
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 100);
+    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
     this.renderer = new THREE.WebGLRenderer({ canvas: elm, antialias: true,alpha:true});
    
     this.renderer.setSize(window.innerWidth, window.innerHeight);

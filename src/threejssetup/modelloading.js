@@ -29,7 +29,7 @@ export const loadmodel = ({ elm }) => {
  
 
 
-  camera.position.set(0, 1.9, 4.3);
+  camera.position.set(0, 1.9, 4.6);
 
   dracoloader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
   gltfloader.setDRACOLoader(dracoloader);
