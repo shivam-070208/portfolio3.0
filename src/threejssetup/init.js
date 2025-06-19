@@ -6,7 +6,7 @@ export function init({ elm }) {
     this.THREE = THREE
     this.scene = new THREE.Scene();
     this.camera = new THREE.PerspectiveCamera(65, window.innerWidth / window.innerHeight, 0.1, 100);
-    this.renderer = new THREE.WebGLRenderer({ canvas: elm, antialias: true,alpha:true });
+    this.renderer = new THREE.WebGLRenderer({ canvas: elm, antialias: true,alpha:true});
    
     this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setPixelRatio(window.devicePixelRatio);

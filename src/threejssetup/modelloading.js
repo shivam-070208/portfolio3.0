@@ -2,6 +2,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { init } from "./init";
 
+
 gsap.registerPlugin(ScrollTrigger);
 
 export const loadmodel = ({ elm }) => {
@@ -9,7 +10,10 @@ export const loadmodel = ({ elm }) => {
 
   let model, mixer;
 
-  // ✅ LIGHTING SETUP
+  const anima = {
+    value: 0.3
+  };
+ 
   const ambientLight = new THREE.AmbientLight(0xffffff, 0.8); // global soft light
   scene.add(ambientLight);
 
@@ -24,16 +28,13 @@ export const loadmodel = ({ elm }) => {
 
  
 
-  // ✅ CAMERA SETUP
+
   camera.position.set(0, 1.9, 4.3);
 
   dracoloader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
   gltfloader.setDRACOLoader(dracoloader);
+ 
 
-
-  const anima = {
-    value: 0.3
-  };
 
   gltfloader.load('/Man7.glb', (gltf) => {
     model = gltf.scene;
@@ -85,8 +86,8 @@ gsap.fromTo(anima, {
     duration: 4,
     yoyo: true,
     scrollTrigger: {
-      trigger: '.div1',
-        end: 300,
+      trigger: '#home',
+        end: 'bottom 300',
       toggleActions: 'play pause play pause',
     
     },
@@ -108,7 +109,7 @@ gsap.fromTo(anima,{
     ease: 'circ.inOut',
     duration:2,
     scrollTrigger: {
-        trigger: '.div2',
+        trigger: '#projects',
         start: 'top 300',
         end: 'bottom bottom',
         toggleActions:'play none none reverse',
@@ -124,10 +125,10 @@ gsap.fromTo(anima,{
 });
 gsap.to(camera.position,{
     x:-0.8,
-    y:1.9,
+    y:1.4,
     z:4.,
     scrollTrigger: {
-        trigger: '.div2',
+        trigger: '#projects',
         start: 'top 300',
         end: 'bottom bottom',
         toggleActions:'play none none reverse',
@@ -137,10 +138,11 @@ gsap.to(camera.position,{
   
 });
  
- 
+
 
   const animate = () => {
   if(model)  camera.lookAt(model.position.x,model.position.y+3.0,model.position.z)
+   
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
   };
